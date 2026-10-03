@@ -7,14 +7,36 @@ type UserCardProps = {
 
 const UserCard = ({ user }: UserCardProps) => {
     return (
-        <article>
-            <h2>
-                {user.profile.name} ({user.username})
-            </h2>
+        <article
+            className="
+    flex h-full flex-col rounded-xl border border-zinc-200
+    bg-white p-6   shadow-lg shadow-indigo-500/20
+    transition duration-200
+    hover:-translate-y-1 hover:shadow-lg
+  "
+        >
+            <div className="mb-2 flex items-baseline justify-between gap-4">
+                <h2 className="text-xl font-semibold text-zinc-900">
+                    {user.profile.name}
+                </h2>
 
-            <p>{user.profile.email}</p>
+                <span className="text-sm text-zinc-500">@{user.username}</span>
+            </div>
 
-            <Link to={`/users/${user.id}`}>View details</Link>
+            <p className="mb-6 text-sm text-zinc-600">{user.profile.email}</p>
+
+            <Link
+                to={`/users/${user.id}`}
+                className="
+      mt-auto font-medium text-indigo-600
+      hover:text-indigo-800 hover:underline
+      focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:ring-indigo-500
+      focus-visible:ring-offset-2
+    "
+            >
+                View more details
+            </Link>
         </article>
     );
 };
