@@ -11,7 +11,10 @@ const UsersPage = () => {
             <h1>Users Page</h1>
             <ul>
                 {users?.map((user) => (
-                    <li key={user.id}>{user.profile.name}</li>
+                    <div key={user.id}>
+                        <h2>{user.profile.name}</h2>
+                        <p>{user.profile.email}</p>
+                    </div>
                 ))}
             </ul>
         </div>
