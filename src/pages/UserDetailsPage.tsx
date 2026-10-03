@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useUsers } from "../hooks/useUsers";
+import ErrorMessage from "../components/ErrorMessage";
 
 const UserDetailsPage = () => {
     const { id } = useParams();
     const { data: users, isLoading, error } = useUsers();
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error occurred while fetching user details.</div>;
+    if (error) return <ErrorMessage />;
 
     const user = users?.find((user) => user.id === Number(id));
 

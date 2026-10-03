@@ -1,4 +1,6 @@
-export const getUsers = async () => {
+import type { User } from "../types/User";
+
+export const getUsers = async (): Promise<User[]> => {
     const res = await fetch(
         "https://api-userapi.onrender.com/api/users/getUsers",
         {
@@ -9,7 +11,9 @@ export const getUsers = async () => {
     );
 
     if (!res.ok) {
-        throw new Error("Failed to fetch users");
+        throw new Error(
+            `Failed to fetch users: ${res.status} ${res.statusText}`,
+        );
     }
 
     const data = await res.json();
