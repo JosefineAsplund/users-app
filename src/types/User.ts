@@ -4,7 +4,6 @@ export type User = {
     profile: {
         name: string;
         email: string;
-        phone: string;
         address: {
             street: string;
             city: string;

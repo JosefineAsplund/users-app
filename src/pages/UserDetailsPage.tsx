@@ -33,6 +33,8 @@ const UserDetailsPage = () => {
         );
     }
 
+    const displayRole = user.roles.find((role) => role !== "user") ?? "user";
+
     return (
         <main className="min-h-screen bg-zinc-900 px-4 py-10">
             <div className="mx-auto max-w-3xl">
@@ -70,6 +72,9 @@ const UserDetailsPage = () => {
 
                             <p className="text-zinc-500">@{user.username}</p>
                         </div>
+                        <span className="ml-auto self-start rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-700 capitalize">
+                            {displayRole}
+                        </span>
                     </div>
 
                     <div className="space-y-5">
