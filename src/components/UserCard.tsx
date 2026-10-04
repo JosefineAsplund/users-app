@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { User } from "../types/User";
+import { ChevronRight } from "lucide-react";
 
 type UserCardProps = {
     user: User;
@@ -27,15 +28,20 @@ const UserCard = ({ user }: UserCardProps) => {
 
             <Link
                 to={`/users/${user.id}`}
-                className="
-      mt-auto font-medium text-indigo-600
-      hover:text-indigo-800 hover:underline
+                className="flex
+      mt-auto font-medium text-indigo-700
+      hover:text-indigo-400
       focus-visible:outline-none
       focus-visible:ring-2 focus-visible:ring-indigo-500
       focus-visible:ring-offset-2
     "
             >
-                View more details
+                View more details{" "}
+                <ChevronRight
+                    size={17}
+                    className="translate-y-1.5"
+                    aria-hidden="true"
+                />
             </Link>
         </article>
     );
