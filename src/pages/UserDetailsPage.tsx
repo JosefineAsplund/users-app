@@ -9,23 +9,27 @@ import {
     MapPin,
     Settings as SettingsIcon,
 } from "lucide-react";
+import NotFoundMessage from "../components/NotFoundMessage";
+import LoadingMessage from "../components/LoadingMessage";
 
 const UserDetailsPage = () => {
     const { id } = useParams();
     const { data: users, isLoading, error } = useUsers();
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) {
+        return <LoadingMessage />;
+    }
     if (error) return <ErrorMessage />;
 
     const user = users?.find((user) => user.id === Number(id));
 
     if (!user) {
         return (
-            <main>
-                <h1>User not found</h1>
-                <p>We couldn't find a user with that ID.</p>
-                <Link to="/">Back to users</Link>
-            </main>
+            <NotFoundMessage
+                label={`No user with ID ${id}`}
+                title="User not found"
+                message="We couldn't find a user with that ID."
+            />
         );
     }
 
@@ -104,7 +108,6 @@ const UserDetailsPage = () => {
                             </p>
                         </section>
 
-                        {/* Settings */}
                         <section className="border-t border-zinc-200 pt-6">
                             <div className="mb-3 flex items-center gap-2">
                                 <SettingsIcon
@@ -124,7 +127,6 @@ const UserDetailsPage = () => {
                                 {user.settings.theme}
                             </p>
 
-                            {/* Notifications */}
                             <div className="mt-5">
                                 <div className="mb-3 flex items-center gap-2">
                                     <Bell

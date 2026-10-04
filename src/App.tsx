@@ -5,13 +5,11 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
     return (
-        <div>
-            <Routes>
-                <Route path="/" element={<UsersPage />} />
-                <Route path="/users/:id" element={<UserDetailsPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-        </div>
+        <Routes>
+            <Route path="/" element={<UsersPage />} />
+            <Route path="/users/:id" element={<UserDetailsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+        </Routes>
     );
 };
 
